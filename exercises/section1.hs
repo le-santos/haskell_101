@@ -1,14 +1,14 @@
 module Section1 where
 
-{--
-    ===== Item 1.1 =====
---}
+  {-
+      ===== Item 1.1 =====
+  -}
 
   -- a) taboada do 5
   multiplesFive :: [Int]
   multiplesFive = [ x | x <- [0..50], mod x 5 == 0]
 
--- b) Retorna o alfabeto sem as consoantes
+  -- b) Retorna o alfabeto sem as consoantes
   stringHasChar :: String -> Char -> Bool
   stringHasChar text char
     | null text = False
@@ -33,20 +33,39 @@ module Section1 where
   checkersCoordinates = [ (x,y) | x <- ['a'..'h'], y <- [1..8] ]
 
 
-{--
-    ===== Item 1.2 =====
---}
+  {-
+      ===== Item 1.2 =====
+  -}
 
   -- a) retorna se uma string é par ou não
 
   stringIsEven :: String -> Bool
   stringIsEven text = even (length text)
 
--- b) retorna um vetor de Strings e retorna lista com todos os elementos em ordem reversa
--- explicit version
-  -- customReverseString :: [Char] -> [[Char]]
-  -- customReverseString = []
-
--- short version
+  -- b) recebe um vetor de Strings e retorna lista com todos os elementos em ordem reversa
+  -- short version
   customReverseShort :: [Char] -> [[Char]]
   customReverseShort text = reverse [ [x] | x <- text ]
+
+  -- explicit version
+  -- 
+  customReverseString :: [Char] -> [[Char]]
+  customReverseString "" = []
+  customReverseString (x:xs)
+    | null xs = [[x]]
+    | otherwise = customReverseString xs ++ [[x]]
+  {-
+    Obs: precisei usar [[x]] porque o pattern faz match com (x:xs), que seria
+    item : lista  ==> ou seja ==> Char : String
+  -}
+
+-- (c) Escreva a funcao head como composicao de duas outras.
+  splitList :: [x] -> [x]
+  splitList (item : lista) = [item]
+
+  extractItem :: [x] -> x
+  extractItem [item] = item
+
+  headComposed :: [x] -> x
+  headComposed list = extractItem $ splitList list
+
