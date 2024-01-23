@@ -3,8 +3,9 @@ module Section2 where
     ===== Item 2.1 =====
   -}
 
-  data Month = January | February | March | April | May | June
-              | July | August | September | October | November | December deriving Show
+  data Month = January | February | March | April |
+               May | June | July | August |
+               September | October | November | December deriving (Show, Enum)
 
   -- a) retorna o número de dias que cada mês possui (considere fevereiro tendo 28 dias).
   monthLastDay :: Month -> Int
@@ -17,18 +18,8 @@ module Section2 where
 
   -- b) recebe um mês atual e retorna o próximo mês
   nextMonth :: Month -> Month
-  nextMonth January = February
-  nextMonth February = March
-  nextMonth March = April
-  nextMonth April = May
-  nextMonth May = June
-  nextMonth June = July
-  nextMonth July = August
-  nextMonth August = September
-  nextMonth September = October
-  nextMonth October = November
-  nextMonth November = December
   nextMonth December = January
+  nextMonth month = succ month
 
   -- c) que retorna a estação do ano de acordo com o mês e com o hemisfério.
   --    (Use apenas tipos criados pela palavra data aqui.)
