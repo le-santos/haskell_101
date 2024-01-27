@@ -7,5 +7,5 @@ help: ## This help.
 build: ## build container image
 	docker build -t haskell_dev .
 
-run: ## run haskell container
+run: ## run haskell ghci REPL in container
 	docker run -it -v .:/app haskell_dev
