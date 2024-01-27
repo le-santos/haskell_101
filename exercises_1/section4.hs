@@ -34,3 +34,23 @@ module Section4 where
     Podemos usar na forma prefix também:
     (:>:) '1' Nulo
   -}
+
+    -- ===== Item 4.2 =====
+
+  data Parity = Even | Odd deriving Show
+
+  class EvenOdd a where
+    decideParity :: a -> Parity
+
+  -- Ex: decideParity True
+  instance EvenOdd Bool where
+    decideParity False = Even
+    decideParity True = Odd
+
+  -- Ex: decideParity (2 :: Int)
+  instance EvenOdd Int where
+    decideParity x = decideParity (odd x :: Bool)
+
+  -- Ex: decideParity [1,2,3]
+  instance EvenOdd [a] where
+    decideParity list = decideParity (length list)
