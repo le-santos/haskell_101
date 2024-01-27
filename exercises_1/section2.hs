@@ -23,10 +23,5 @@ module Section2 where
 
   -- c) retorna a estação do ano de acordo com o mês e com o hemisfério.
   --    (Use apenas tipos criados pela palavra data aqui.)
-  data Season = Spring | Summer | Autumn | Winter deriving Show
-  data Hemisphere = North | South deriving Show
-
-  -- season :: Hemisphere -> Month -> Season
-  -- season North month = Winter
-
-    -- matchForMonth = [(x,y,z) | x <-[North, South] ,y <- [December, January, February], z <- [Summer, Winter]]
+  -- data Season = Spring | Summer | Autumn | Winter deriving Show
+  -- data Hemisphere = North | South deriving Show
