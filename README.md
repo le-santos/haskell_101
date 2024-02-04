@@ -16,4 +16,9 @@ make build
 # para subir o ambiente ghci mapeando o volume local para dentro do container
 make run
 
+# carregue o módulo desejado para testar as funções, por ex:
+:l exercises_1/section1.hs
+
+# para sair do ambiente ghci
+:q
 ```
