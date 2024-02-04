@@ -29,3 +29,27 @@ module Sect2 where
   • Dois : o segundo campo entra;
   • Tres : o terceiro campo entra.
 -}
+
+  instance Applicative Box where
+    pure :: a -> Box a
+    pure = One
+
+    (<*>) :: Box (a -> b) -> Box a -> Box b
+    (One f) <*> (One a) = One (f a)
+    (One f) <*> (Two a b) = Two (f a) (f b)
+    (One f) <*> (Three a b c) = Three (f a) (f b) (f c)
+
+  instance Monad Box where
+    return :: a -> Box a
+    return = pure
+
+    (>>=) :: Box a -> (a -> Box b) -> Box b
+    One a >>= f       = f a
+    Two a b >>= f     = f b
+    Three a b c >>= f = f c
+
+  {-
+    2.2. Crie uma função mult234 :: Double -> Caixa Double que receba uma parâmetro x
+    e devolva o dobro de x na primeira coordenada, o triplo na segunda
+    e o quádruplo na terceira usando o operador >>=
+  -}
