@@ -53,3 +53,9 @@ module Sect2 where
     e devolva o dobro de x na primeira coordenada, o triplo na segunda
     e o quádruplo na terceira usando o operador >>=
   -}
+
+  -- Definindo o tipo Caixa como uma tupla com três coordenadas
+  type Caixa a = (a, a, a)
+
+  mult234 :: Double -> Caixa Double
+  mult234 x = return x >>= (\y -> return (2*y)) >>= (\z -> return (3*z, z)) >>= (\(a, b) -> return (a, b, 4*b))
